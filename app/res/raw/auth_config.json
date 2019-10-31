@@ -1,0 +1,11 @@
+{
+  "client_id": "69bead03-e468-44c8-bab4-a599039ba671",
+  "redirect_uri": "https://login.microsoftonline.com/tfp/oauth2/nativeclient",
+  "authorization_scope": "openid",
+  "discovery_uri": "",
+  "authorization_endpoint_uri": "https://login.microsoftonline.com/qbitkloudb2c.onmicrosoft.com/oauth2/authorize?p=B2C_1A_signup_signin",
+  "token_endpoint_uri": "https://login.microsoftonline.com/qbitkloudb2c.onmicrosoft.com/oauth2/token?p=B2C_1A_signup_signin",
+  "registration_endpoint_uri": "",
+  "user_info_endpoint_uri": "https://login.microsoftonline.com/qbitkloudb2c.onmicrosoft.com/openid/userinfo?p=B2C_1A_signup_signin",
+  "https_required": true
+}

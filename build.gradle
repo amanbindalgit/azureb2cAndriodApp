@@ -1,0 +1,51 @@
+
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
+        classpath 'org.ajoberstar:gradle-git:1.5.1'
+    }
+}
+
+subprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+try {
+    def grgit = org.ajoberstar.grgit.Grgit.open(dir: '.')
+    def lastCommit = grgit.head()
+
+    project.ext.versionNum = grgit.log(includes:['HEAD']).size()
+    project.ext.versionName = grgit.describe()
+    project.ext.versionDate = lastCommit.getDate()
+    if (project.ext.versionName == null) {
+        project.ext.versionName = 'DEV'
+    }
+} catch (Exception ex) {
+    project.ext.versionNum = 0
+    project.ext.versionName = 'DEV'
+    project.ext.versionDate = new Date()
+}
+
+project.ext.minSdkVersion = 16
+project.ext.compileSdkVersion = 28
+project.ext.buildToolsVersion = '28.0.3'
+project.ext.supportLibVersion = '28.0.0'
+
+task showVersion {
+    doLast {
+        logger.lifecycle("Version ID: " + project.versionNum)
+        logger.lifecycle("Version Name: " + project.versionName)
+        logger.lifecycle("Version Date: " + project.versionDate)
+    }
+}
